@@ -88,18 +88,18 @@ pipeline {
       passwordVariable: 'NEXUS_PASS'
     )]) {
       // Crée un settings.xml temporaire avec les credentials
-      sh '''
-      cat > settings.xml <<EOF
-      <settings>
-        <servers>
-          <server>
-            <id>nexus</id>
-            <username>admin</username>
-            <password>5fdfd5ef-bccb-45c6-ad25-dd492ae98238</password>
-          </server>
-        </servers>
-      </settings>
-    EOF
+sh '''
+cat > settings.xml <<EOF
+<settings>
+  <servers>
+    <server>
+        <id>nexus</id>
+        <username>admin</username>
+        <password>5fdfd5ef-bccb-45c6-ad25-dd492ae98238</password>
+    </server>
+  </servers>
+</settings>
+EOF
 '''
       
       // Utilise le nouveau settings.xml et corrige la syntaxe du repository
