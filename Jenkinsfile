@@ -101,6 +101,8 @@ pipeline {
 EOF'''
       
       // Utilise le nouveau settings.xml et corrige la syntaxe du repository
+      sh 'cat settings.xml'
+
       sh 'mvn deploy -B -s settings.xml -DaltDeploymentRepository=nexus::http://localhost:8081/repository/maven-snapshots/'
     }
   }
