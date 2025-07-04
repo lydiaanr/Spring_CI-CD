@@ -88,19 +88,19 @@ pipeline {
       passwordVariable: 'NEXUS_PASS'
     )]) {
       // Crée un settings.xml temporaire avec les credentials
-      sh """
+      sh '''
       cat > settings.xml <<EOF
       <settings>
         <servers>
           <server>
             <id>nexus</id>
-            <username>$NEXUS_USER</username>
-            <password>$NEXUS_PASS</password>
+            <username>admin</username>
+            <password>5fdfd5ef-bccb-45c6-ad25-dd492ae98238</password>
           </server>
         </servers>
       </settings>
     EOF
-"""
+'''
       
       // Utilise le nouveau settings.xml et corrige la syntaxe du repository
       sh 'mvn deploy -B -s $WORKSPACE/settings.xml -DaltDeploymentRepository=nexus::http://localhost:8081/repository/maven-snapshots/'
